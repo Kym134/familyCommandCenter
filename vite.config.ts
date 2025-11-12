@@ -2,9 +2,12 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+// Determine base URL based on environment
+const base = process.env.GITHUB_ACTIONS ? '/familyCommandCenter/' : '/';
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.BASE_URL || '/',
+  base: base,
   plugins: [
     react(),
     VitePWA({
@@ -61,8 +64,12 @@ export default defineConfig({
             },
           },
         ],
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/api/],
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/(api|assets)\//],
+        // Handle GitHub Pages routing with base path
+        modifyURLPrefix: {
+          '': base,
+        },
       },
       devOptions: {
         enabled: true,
