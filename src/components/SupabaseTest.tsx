@@ -9,8 +9,10 @@ export function SupabaseTest() {
     supabase
       .from('families')
       .select('count')
-      .then(() => setConnected(true))
-      .catch(() => setConnected(false));
+      .then(
+    () => setConnected(true),      // success
+    () => setConnected(false)      // error
+  );
   }, []);
 
   return (
