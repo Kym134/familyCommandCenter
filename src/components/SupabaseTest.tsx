@@ -7,6 +7,7 @@ export function SupabaseTest() {
   const [error, setError] = useState<string | null>(null);
   const [family, setFamily] = useState<Family | null>(null);
   const [members, setMembers] = useState<User[]>([]);
+  const [connected, setConnected] = useState<boolean | null>(null);
 
   useEffect(() => {
     async function fetchData() {
