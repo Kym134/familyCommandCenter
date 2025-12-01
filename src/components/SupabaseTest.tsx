@@ -42,6 +42,14 @@ export function SupabaseTest() {
     }
 
     fetchData();
+    // Test connection
+    supabase
+      .from('families')
+      .select('count')
+      .then(
+    () => setConnected(true),      // success
+    () => setConnected(false)      // error
+  );
   }, []);
 
   if (loading) {
