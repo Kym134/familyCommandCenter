@@ -4,9 +4,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
+import { FamilyProvider } from './contexts/FamilyContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <FamilyProvider>
+      <App />
+    </FamilyProvider>
   </React.StrictMode>,
 );
